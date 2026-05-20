@@ -154,108 +154,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Contact Tabs ---
-  const tabBtns = document.querySelectorAll('.contact-tab');
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tabId = btn.dataset.tab;
-      // Update tab buttons
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      // Update tab contents
-      document.querySelectorAll('.contact-tab-content').forEach(c => c.classList.remove('active'));
-      const content = document.getElementById('content-' + tabId);
-      if (content) content.classList.add('active');
-      // Lazy-load Calendly on first click
-      if (tabId === 'booking' && !window._calendlyLoaded) {
-        loadCalendly();
-      }
-    });
-  });
-
-  // --- Calendly embed ---
-  function loadCalendly() {
-    window._calendlyLoaded = true;
-    const container = document.getElementById('calendly-embed');
-    const placeholder = document.getElementById('calendly-placeholder');
-    // ⚠️ REPLACE THIS URL with your actual Calendly link
-    const CALENDLY_URL = 'https://calendly.com/YOUR_USERNAME/appel-telephonique';
-    if (container) {
-      const iframe = document.createElement('iframe');
-      iframe.src = CALENDLY_URL + '?hide_gdpr_banner=1&background_color=fdfcfa&text_color=1a1a1a&primary_color=b8956a';
-      iframe.style.width = '100%';
-      iframe.style.minHeight = '630px';
-      iframe.style.border = 'none';
-      iframe.setAttribute('loading', 'lazy');
-      iframe.onload = () => { if (placeholder) placeholder.style.display = 'none'; };
-      container.appendChild(iframe);
-    }
-  }
-
-  // --- Form handling (Formspree) ---
-  // ⚠️ REPLACE 'YOUR_FORM_ID' with your Formspree form ID
-  // → Sign up free at https://formspree.io
-  // → Create a form, copy the ID (e.g. "xpzvqkdl")
-  const FORMSPREE_ID = 'YOUR_FORM_ID';
-
+  // --- Form handling ---
   const form = document.getElementById('contact-form');
   if (form) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = document.getElementById('contact-email').value.trim();
-      const phone = document.getElementById('contact-phone').value.trim();
-      const errorEl = document.getElementById('form-error');
-
-      // Custom validation: email OR phone required
-      if (!email && !phone) {
-        if (errorEl) errorEl.style.display = 'block';
-        return;
-      }
-      if (errorEl) errorEl.style.display = 'none';
-
       const btn = form.querySelector('.btn-gold');
       const originalText = btn.innerHTML;
-      const t = TRANSLATIONS[currentLang];
-
-      // Loading state
-      btn.innerHTML = '<span>...</span>';
-      btn.style.pointerEvents = 'none';
-
-      try {
-        const formData = new FormData(form);
-        // Add fields explicitly for Formspree
-        formData.set('name', document.getElementById('contact-name').value);
-        formData.set('email', email || 'Non renseigné');
-        formData.set('phone', phone || 'Non renseigné');
-        formData.set('message', document.getElementById('contact-message').value);
-
-        const response = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          btn.innerHTML = '<span>' + t.form_sent + '</span>';
-          btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
-          setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '';
-            btn.style.pointerEvents = '';
-            form.reset();
-          }, 2500);
-        } else {
-          throw new Error('Send failed');
+      btn.innerHTML = '<span>Envoyé ✓</span>';
+      btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        form.reset();
+        // Reset calendar display
+        const display = document.getElementById('date-range-display');
+        if (display) {
+          display.innerHTML = '<span class="date-range-placeholder">Sélectionnez vos dates</span>';
         }
-      } catch (err) {
-        btn.innerHTML = '<span>' + (currentLang === 'fr' ? 'Erreur — réessayez' : 'Error — try again') + '</span>';
-        btn.style.background = 'rgba(220,53,69,0.8)';
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = '';
-          btn.style.pointerEvents = '';
-        }, 3000);
-      }
+      }, 2500);
     });
   }
 
@@ -271,7 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const hiddenInput = document.getElementById('contact-dates');
 
   if (calDisplay && calDropdown) {
-    function getMonths() { return TRANSLATIONS[currentLang].cal_months; }
+    const MONTHS_FR = [
+      'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+    ];
 
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
@@ -323,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
       startDate = null;
       endDate = null;
       hiddenInput.value = '';
-      calDisplay.innerHTML = '<span class="date-range-placeholder">' + TRANSLATIONS[currentLang].form_dates_placeholder + '</span>';
+      calDisplay.innerHTML = '<span class="date-range-placeholder">Sélectionnez vos dates</span>';
       renderCalendar();
     });
 
@@ -332,9 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
       closeCalendar();
     });
 
-    function formatDate(date) {
+    function formatDateFR(date) {
       const d = date.getDate();
-      const m = getMonths()[date.getMonth()].toLowerCase();
+      const m = MONTHS_FR[date.getMonth()].toLowerCase();
       return d + ' ' + m;
     }
 
@@ -369,21 +289,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateDisplay() {
       if (startDate && endDate) {
         calDisplay.innerHTML = '<span class="date-range-value">' +
-          formatDate(startDate) + ' — ' + formatDate(endDate) + ' ' + endDate.getFullYear() +
+          formatDateFR(startDate) + ' — ' + formatDateFR(endDate) + ' ' + endDate.getFullYear() +
           '</span>';
         hiddenInput.value = startDate.toISOString().split('T')[0] + ' / ' + endDate.toISOString().split('T')[0];
       } else if (startDate) {
         calDisplay.innerHTML = '<span class="date-range-value">' +
-          formatDate(startDate) + ' ' + startDate.getFullYear() + ' → …</span>';
+          formatDateFR(startDate) + ' ' + startDate.getFullYear() + ' → …</span>';
         hiddenInput.value = startDate.toISOString().split('T')[0];
       } else {
-        calDisplay.innerHTML = '<span class="date-range-placeholder">' + TRANSLATIONS[currentLang].form_dates_placeholder + '</span>';
+        calDisplay.innerHTML = '<span class="date-range-placeholder">Sélectionnez vos dates</span>';
         hiddenInput.value = '';
       }
     }
 
     function renderCalendar() {
-      calMonthYear.textContent = getMonths()[currentMonth] + ' ' + currentYear;
+      calMonthYear.textContent = MONTHS_FR[currentMonth] + ' ' + currentYear;
 
       const firstDay = new Date(currentYear, currentMonth, 1);
       const lastDay = new Date(currentYear, currentMonth + 1, 0);

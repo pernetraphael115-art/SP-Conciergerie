@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SP Conciergerie — Saint-Tropez | Paris | Courchevel</title>
+  <meta name="description" content="SP Conciergerie, votre service de conciergerie de luxe sur mesure. Interventions exclusives à Saint-Tropez, Paris et Courchevel.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#" class="header-logo" id="header-logo">SP CONCIERGERIE</a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#" data-modal="gestion">Gestion de propriétés</a>
+        <a href="#" data-modal="conciergerie">Conciergerie privée</a>
+        <a href="#" data-modal="evenementiel">Événementiel</a>
+        <a href="#" data-modal="apropos">À propos</a>
+        <a href="#" data-modal="contact">Contact</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="#" data-modal="gestion">Gestion de propriétés</a>
+    <a href="#" data-modal="conciergerie">Conciergerie privée</a>
+    <a href="#" data-modal="evenementiel">Événementiel</a>
+    <a href="#" data-modal="apropos">À propos</a>
+    <a href="#" data-modal="contact">Contact</a>
+  </nav>
+
+  <!-- ============ HERO — Full screen ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-slideshow">
+      <div class="hero-slide" style="background-image: url('assets/st_tropez_yacht.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/paris_balcony.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/courchevel_chalet.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/st_tropez_villa.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/paris_dining.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/courchevel_interior.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/st_tropez_beachclub.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/paris_car.png')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-logo-wrapper">
+        <img src="assets/logo-sp-monogram.png?v=2" alt="SP Conciergerie" class="hero-big-sp-img">
+      </div>
+      <div class="hero-tagline">
+        <h1>L'Art du Sur Mesure</h1>
+        <p>Votre conciergerie d'exception</p>
+        <div class="hero-locations">Saint-Tropez &nbsp;·&nbsp; Paris &nbsp;·&nbsp; Courchevel</div>
+        <div class="hero-cta">
+          <button class="btn-gold" data-modal="contact"><span>Nous Contacter</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODALS ============ -->
+
+  <!-- GESTION DE PROPRIÉTÉS -->
+  <div class="modal" id="modal-gestion">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-hero" style="background-image: url('assets/location-saisonniere.png')">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <span class="modal-label">Gestion de propriétés</span>
+          <h2>Confiez-nous votre bien, nous nous occupons du reste.</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-services">
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">01</div>
+              <h3>Gestion locative complète</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Nous valorisons votre bien et maximisons sa rentabilité tout en assurant une gestion intégrale.</p>
+              <ul>
+                <li>Shooting photo professionnel</li>
+                <li>Création &amp; optimisation des annonces</li>
+                <li>Stratégie tarifaire dynamique</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">02</div>
+              <h3>Gestion des réservations</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li>Gestion des demandes voyageurs</li>
+                <li>Sélection des profils</li>
+                <li>Optimisation du calendrier</li>
+                <li>Assistance voyageurs 7j/7</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">03</div>
+              <h3>Intendance &amp; maintenance</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li>Ménage professionnel</li>
+                <li>Entretien piscine &amp; jardin</li>
+                <li>Maintenance technique (interventions rapides)</li>
+                <li>Vérification du bien après chaque séjour</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">04</div>
+              <h3>Accueil &amp; expérience client</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li>Check-in / check-out personnalisés</li>
+                <li>Accueil premium</li>
+                <li>Assistance pendant le séjour</li>
+                <li>Services de conciergerie additionnels</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">05</div>
+              <h3>Optimisation &amp; suivi</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li>Maximisation du taux d'occupation</li>
+                <li>Ajustement des prix selon la demande</li>
+                <li>Reporting propriétaire</li>
+                <li>Amélioration continue du bien</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-cta">
+          <button class="btn-gold" data-modal="contact"><span>Confier mon bien</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCIERGERIE PRIVÉE -->
+  <div class="modal" id="modal-conciergerie">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-hero" style="background-image: url('assets/reservations-nightlife.png')">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <span class="modal-label">Conciergerie privée</span>
+          <h2>Un service d'exception, pensé pour vous offrir une expérience sans compromis.</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-services">
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">01</div>
+              <h3>Organisation de votre séjour</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Nous vous accompagnons à chaque étape afin de vous offrir une expérience parfaitement fluide et sur-mesure.</p>
+              <ul>
+                <li>Planification complète de votre séjour</li>
+                <li>Recommandations personnalisées</li>
+                <li>Itinéraires adaptés à vos envies</li>
+                <li>Assistance dédiée 7j/7</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">02</div>
+              <h3>Réservations &amp; accès privilégiés</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Nous vous ouvrons les portes des lieux les plus recherchés, même en haute saison.</p>
+              <ul>
+                <li>Restaurants &amp; tables exclusives</li>
+                <li>Plages privées &amp; beach clubs</li>
+                <li>Accès VIP &amp; événements</li>
+                <li>Réservations de dernière minute</li>
+                <li>Présence sur place pour accueil personnel</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">03</div>
+              <h3>Transports &amp; déplacements</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Nous organisons chacun de vos déplacements avec confort et discrétion.</p>
+              <ul>
+                <li>Chauffeurs privés</li>
+                <li>Transferts aéroport / gare</li>
+                <li>Location de véhicules (luxe, SUV, sport)</li>
+                <li>Hélicoptères &amp; jets privés</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">04</div>
+              <h3>Expériences &amp; loisirs</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Profitez d'expériences uniques, soigneusement sélectionnées.</p>
+              <ul>
+                <li>Location de yachts &amp; bateaux</li>
+                <li>Journées en mer &amp; excursions</li>
+                <li>Activités nautiques</li>
+                <li>Expériences exclusives sur-mesure</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">05</div>
+              <h3>Services privés</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Offrez-vous le confort et l'exigence d'un service personnalisé à domicile.</p>
+              <ul>
+                <li>Chefs privés</li>
+                <li>Service traiteur</li>
+                <li>Majordome &amp; personnel de maison</li>
+                <li>Sommeliers</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">06</div>
+              <h3>Bien-être &amp; lifestyle</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Prenez soin de vous dans un cadre privilégié.</p>
+              <ul>
+                <li>Massages à domicile</li>
+                <li>Coiffure &amp; esthétique</li>
+                <li>Coach sportif (yoga, pilates, fitness)</li>
+                <li>Services bien-être personnalisés</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">07</div>
+              <h3>Services du quotidien</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Nous simplifions chaque détail de votre séjour.</p>
+              <ul>
+                <li>Babysitting</li>
+                <li>Livraison de courses</li>
+                <li>Préparation de villa avant votre arrivée</li>
+                <li>Assistance personnelle</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-quote">
+          <blockquote>
+            Notre engagement<br><br>Chaque demande est unique. Nous nous engageons à répondre à toutes vos exigences avec discrétion, réactivité et excellence.
+          </blockquote>
+        </div>
+        <div class="modal-cta">
+          <button class="btn-gold" data-modal="contact"><span>Faire une Demande</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉVÉNEMENTIEL -->
+  <div class="modal" id="modal-evenementiel">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-hero" style="background-image: url('assets/experience-dining.png')">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <span class="modal-label">Événementiel</span>
+          <h2>Des événements uniques, conçus dans les moindres détails pour créer des moments inoubliables.</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-services">
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">01</div>
+              <h3>Organisation complète</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p>Nous créons des expériences uniques adaptées à chaque occasion.</p>
+              <ul>
+                <li>Soirées privées en villa</li>
+                <li>Anniversaires</li>
+                <li>EVJF / EVG</li>
+                <li>Dîners privés &amp; expériences gastronomiques</li>
+                <li>Événements corporate</li>
+                <li>Mariages &amp; célébrations</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-number">02</div>
+              <h3>Gestion &amp; coordination</h3>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li>Recherche de lieux</li>
+                <li>Décoration &amp; ambiance</li>
+                <li>DJ, artistes, animations</li>
+                <li>Sécurité &amp; logistique</li>
+                <li>Coordination jour J</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-quote">
+          <blockquote>
+            Chaque événement peut être immortalisé par une équipe de photographes et vidéastes professionnels, afin de capturer chaque instant et vous offrir des souvenirs uniques et intemporels.
+          </blockquote>
+        </div>
+        <div class="modal-cta">
+          <button class="btn-gold" data-modal="contact"><span>Organiser un Événement</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="modal" id="modal-contact">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel modal-panel--contact">
+      <button class="modal-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-hero modal-hero--short" style="background-image: url('assets/contact-concierge.png')">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <span class="modal-label">Contact</span>
+          <h2>Parlons de Vos Envies</h2>
+          <p>Chaque demande est unique. Concevons ensemble votre expérience idéale.</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Nom</label>
+              <input type="text" id="contact-name" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" placeholder="Votre email" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-phone">Téléphone</label>
+              <input type="tel" id="contact-phone" placeholder="+33 6 00 00 00 00">
+            </div>
+            <div class="form-group">
+              <label for="contact-service">Service</label>
+              <input type="text" id="contact-service" placeholder="Yacht, Villa, Expérience...">
+            </div>
+          </div>
+          <div class="form-group form-group--dates">
+            <label>Dates souhaitées</label>
+            <div class="date-range-picker" id="date-range-picker">
+              <div class="date-range-display" id="date-range-display">
+                <span class="date-range-placeholder">Sélectionnez vos dates</span>
+              </div>
+              <div class="calendar-dropdown" id="calendar-dropdown">
+                <div class="calendar-header">
+                  <button type="button" class="cal-nav cal-prev" id="cal-prev">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+                  </button>
+                  <span class="cal-month-year" id="cal-month-year"></span>
+                  <button type="button" class="cal-nav cal-next" id="cal-next">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+                  </button>
+                </div>
+                <div class="calendar-weekdays">
+                  <span>Lu</span><span>Ma</span><span>Me</span><span>Je</span><span>Ve</span><span>Sa</span><span>Di</span>
+                </div>
+                <div class="calendar-days" id="cal-days"></div>
+                <div class="calendar-footer">
+                  <button type="button" class="cal-clear" id="cal-clear">Effacer</button>
+                  <button type="button" class="cal-confirm" id="cal-confirm">Confirmer</button>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" id="contact-dates" name="dates">
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Votre message</label>
+            <textarea id="contact-message" placeholder="Décrivez-nous votre projet..." rows="4"></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-gold"><span>Envoyer ma Demande</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- À PROPOS -->
+  <div class="modal" id="modal-apropos">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-hero" style="background-image: url('assets/sandra-portrait.png')">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <span class="modal-label">À propos</span>
+          <h2>Sandra Pernet</h2>
+        </div>
+      </div>
+      <div class="modal-body apropos-body">
+        <div class="apropos-intro">
+          <p class="apropos-lead">Derrière SP Conciergerie se trouve une femme passionnée, profondément ancrée dans l'univers du luxe et de l'art de vivre à la française.</p>
+        </div>
+        <div class="apropos-story">
+          <h3>Un parcours d'exception</h3>
+          <p>Originaire du sud de la France, Sandra a débuté sa carrière comme mannequin, évoluant entre les podiums parisiens, les shootings sur les plages de Saint-Tropez et les événements mondains de Courchevel. Ce monde exigeant lui a appris le sens du détail, l'élégance naturelle et, surtout, l'art de créer des connexions authentiques.</p>
+          <p>Au fil des années, Sandra a tissé un carnet d'adresses exceptionnel — restaurateurs étoilés, directeurs de palaces, capitaines de yachts, artistes et artisans d'excellence. Chaque rencontre est devenue une porte ouverte vers un service toujours plus personnalisé et exclusif.</p>
+          <h3>De la passion au métier</h3>
+          <p>C'est tout naturellement que Sandra a fondé SP Conciergerie, transformant son réseau privilégié et sa connaissance intime de ces destinations en un service de conciergerie sur mesure. Sa philosophie est simple : chaque client mérite une attention absolue, chaque demande est une promesse d'excellence.</p>
+          <p>Présente à Saint-Tropez, Paris et Courchevel, Sandra connaît chaque adresse confidentielle, chaque lieu d'exception et chaque prestataire de confiance. Elle met cette expertise rare au service de ses clients, avec une discrétion et une réactivité qui font toute la différence.</p>
+          <h3>Notre engagement</h3>
+          <p>Chez SP Conciergerie, nous ne proposons pas simplement des services — nous créons des expériences. Que ce soit pour la gestion de votre propriété, l'organisation d'un événement inoubliable ou simplement pour vous offrir le meilleur d'une destination, Sandra et son équipe sont à vos côtés, 7 jours sur 7.</p>
+        </div>
+        <div class="modal-cta">
+          <button class="btn-gold" data-modal="contact"><span>Rencontrons-nous</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

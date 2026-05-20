@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SP Conciergerie — Service Sur Mesure | Saint-Tropez</title>
-  <meta name="description" content="SP Conciergerie, votre service de conciergerie de luxe sur mesure à Saint-Tropez. Réservations, Yachts, Villas, Expériences & Location Saisonnière.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>SP Conciergerie — Saint-Tropez | Paris | Courchevel</title>
+  <meta name="description" content="SP Conciergerie, votre service de conciergerie de luxe sur mesure. Interventions exclusives à Saint-Tropez, Paris et Courchevel.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,270 +14,69 @@
     <div class="header-inner">
       <a href="#" class="header-logo" id="header-logo">SP CONCIERGERIE</a>
       <nav class="nav-links" id="nav-links">
-        <a href="#" data-modal="reservations">Réservations</a>
-        <a href="#" data-modal="yachts">Yachts</a>
-        <a href="#" data-modal="villas">Villas</a>
-        <a href="#" data-modal="experiences">Expériences</a>
-        <a href="#" data-modal="location">Location</a>
-        <a href="#" data-modal="contact">Contact</a>
+        <a href="#" data-modal="gestion" data-i18n="nav_gestion">Gestion de propriétés</a>
+        <a href="#" data-modal="conciergerie" data-i18n="nav_conciergerie">Conciergerie privée</a>
+        <a href="#" data-modal="evenementiel" data-i18n="nav_evenementiel">Événementiel</a>
+        <a href="#" data-modal="apropos" data-i18n="nav_apropos">À propos</a>
+        <a href="#" data-modal="contact" data-i18n="nav_contact">Contact</a>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
       </nav>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header-right-mobile">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- Mobile Nav Overlay -->
   <nav class="mobile-nav" id="mobile-nav">
-    <a href="#" data-modal="reservations">Réservations</a>
-    <a href="#" data-modal="yachts">Yachts</a>
-    <a href="#" data-modal="villas">Villas</a>
-    <a href="#" data-modal="experiences">Expériences</a>
-    <a href="#" data-modal="location">Location</a>
-    <a href="#" data-modal="contact">Contact</a>
+    <a href="#" data-modal="gestion" data-i18n="nav_gestion">Gestion de propriétés</a>
+    <a href="#" data-modal="conciergerie" data-i18n="nav_conciergerie">Conciergerie privée</a>
+    <a href="#" data-modal="evenementiel" data-i18n="nav_evenementiel">Événementiel</a>
+    <a href="#" data-modal="apropos" data-i18n="nav_apropos">À propos</a>
+    <a href="#" data-modal="contact" data-i18n="nav_contact">Contact</a>
   </nav>
 
   <!-- ============ HERO — Full screen ============ -->
   <section class="hero" id="hero">
-    <div class="hero-bg" style="background-image: url('assets/hero-saint-tropez.png')"></div>
+    <div class="hero-slideshow">
+      <div class="hero-slide" style="background-image: url('assets/st_tropez_yacht.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/paris_balcony.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/courchevel_chalet.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/st_tropez_villa.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/paris_dining.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/courchevel_interior.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/st_tropez_beachclub.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/paris_car.png')"></div>
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-logo-wrapper">
-        <img src="assets/logo-sp-conciergerie.jpg" alt="SP Conciergerie" class="hero-logo">
+        <img src="assets/logo-sp-monogram.png?v=2" alt="SP Conciergerie" class="hero-big-sp-img">
       </div>
       <div class="hero-tagline">
-        <h1>L'Art du Sur Mesure</h1>
-        <p>Votre conciergerie d'exception sur la Côte d'Azur</p>
+        <h1 data-i18n="hero_title">L'Art du Sur Mesure</h1>
+        <p data-i18n="hero_subtitle">Votre conciergerie d'exception</p>
+        <div class="hero-locations">Saint-Tropez &nbsp;·&nbsp; Paris &nbsp;·&nbsp; Courchevel</div>
+        <div class="hero-cta">
+          <button class="btn-gold" data-modal="contact"><span data-i18n="hero_cta">Nous Contacter</span></button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============ MODALS ============ -->
 
-  <!-- RÉSERVATIONS -->
-  <div class="modal" id="modal-reservations">
-    <div class="modal-backdrop"></div>
-    <div class="modal-panel">
-      <button class="modal-close" aria-label="Fermer">
-        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="modal-hero" style="background-image: url('assets/reservations-nightlife.png')">
-        <div class="modal-hero-overlay"></div>
-        <div class="modal-hero-content">
-          <span class="modal-label">Réservations</span>
-          <h2>Chaque Détail, Orchestré pour Vous</h2>
-          <p>De la table la plus prisée au club le plus sélect, nous ouvrons les portes de l'inaccessible.</p>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="modal-services">
-          <div class="modal-service-card">
-            <div class="modal-card-number">01</div>
-            <h3>Restaurants & Beach Clubs</h3>
-            <ul>
-              <li>Tables étoilées Michelin</li>
-              <li>Beach clubs exclusifs</li>
-              <li>Dîners privés avec chef</li>
-              <li>Expériences gastronomiques sur mesure</li>
-            </ul>
-          </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">02</div>
-            <h3>Night-life & Événements</h3>
-            <ul>
-              <li>Accès VIP aux clubs de Saint-Tropez</li>
-              <li>Tables privées & carrés VIP</li>
-              <li>Soirées exclusives sur invitation</li>
-              <li>Organisation d'événements privés</li>
-            </ul>
-          </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">03</div>
-            <h3>Bien-être & Lifestyle</h3>
-            <ul>
-              <li>Spas d'exception</li>
-              <li>Coachs sportifs privés</li>
-              <li>Personal shoppers</li>
-              <li>Services de beauté à domicile</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="modal-cta">
-          <button class="btn-gold" data-modal="contact"><span>Faire une Demande</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- YACHTS -->
-  <div class="modal" id="modal-yachts">
-    <div class="modal-backdrop"></div>
-    <div class="modal-panel">
-      <button class="modal-close" aria-label="Fermer">
-        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="modal-hero" style="background-image: url('assets/yacht-luxury.png')">
-        <div class="modal-hero-overlay"></div>
-        <div class="modal-hero-content">
-          <span class="modal-label">Yachts</span>
-          <h2>Naviguez au-delà de l'Horizon</h2>
-          <p>Des croisières d'exception le long de la Côte d'Azur, à bord des plus beaux yachts de la Méditerranée.</p>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="modal-services">
-          <div class="modal-service-card">
-            <div class="modal-card-number">01</div>
-            <h3>Location de Yachts</h3>
-            <ul>
-              <li>Yachts à moteur de 20 à 80+ mètres</li>
-              <li>Voiliers de prestige</li>
-              <li>Catamarans de luxe</li>
-              <li>Équipage professionnel inclus</li>
-            </ul>
-          </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">02</div>
-            <h3>Itinéraires Sur Mesure</h3>
-            <ul>
-              <li>Saint-Tropez — Cannes — Monaco</li>
-              <li>Îles de Porquerolles & Lérins</li>
-              <li>Sardaigne & Corse</li>
-              <li>Croisières privées au coucher du soleil</li>
-            </ul>
-          </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">03</div>
-            <h3>Services à Bord</h3>
-            <ul>
-              <li>Chef privé & sommelier</li>
-              <li>Activités nautiques (jet-ski, plongée)</li>
-              <li>Spa & massage sur le pont</li>
-              <li>Organisation de fêtes à bord</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="modal-cta">
-          <button class="btn-gold" data-modal="contact"><span>Réserver un Yacht</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- VILLAS -->
-  <div class="modal" id="modal-villas">
-    <div class="modal-backdrop"></div>
-    <div class="modal-panel">
-      <button class="modal-close" aria-label="Fermer">
-        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="modal-hero" style="background-image: url('assets/villas-luxury.png')">
-        <div class="modal-hero-overlay"></div>
-        <div class="modal-hero-content">
-          <span class="modal-label">Villas</span>
-          <h2>Des Demeures d'Exception</h2>
-          <p>Les plus belles propriétés de la presqu'île, sélectionnées pour leur caractère unique.</p>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="modal-services">
-          <div class="modal-service-card">
-            <div class="modal-card-number">01</div>
-            <h3>Pieds dans l'Eau</h3>
-            <ul>
-              <li>Accès direct à la plage</li>
-              <li>Piscines à débordement</li>
-              <li>Vue panoramique mer</li>
-              <li>De 4 à 12 chambres</li>
-            </ul>
-          </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">02</div>
-            <h3>Propriétés Privées</h3>
-            <ul>
-              <li>Domaines viticoles exclusifs</li>
-              <li>Bastides provençales de charme</li>
-              <li>Villas contemporaines d'architecte</li>
-              <li>Sécurité & discrétion garanties</li>
-            </ul>
-          </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">03</div>
-            <h3>Services Villa</h3>
-            <ul>
-              <li>Majordome & personnel de maison</li>
-              <li>Chef cuisinier privé</li>
-              <li>Chauffeur & véhicule de luxe</li>
-              <li>Conciergerie 24h/24</li>
-            </ul>
-          </div>
-        </div>
-        <div class="modal-cta">
-          <button class="btn-gold" data-modal="contact"><span>Trouver ma Villa</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- EXPÉRIENCES -->
-  <div class="modal" id="modal-experiences">
-    <div class="modal-backdrop"></div>
-    <div class="modal-panel">
-      <button class="modal-close" aria-label="Fermer">
-        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="modal-hero" style="background-image: url('assets/experience-dining.png')">
-        <div class="modal-hero-overlay"></div>
-        <div class="modal-hero-content">
-          <span class="modal-label">Expériences</span>
-          <h2>L'Extraordinaire Devient Quotidien</h2>
-          <p>Des moments uniques, orchestrés pour transformer votre séjour en souvenir inoubliable.</p>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="modal-services">
-          <div class="modal-service-card">
-            <div class="modal-card-number">01</div>
-            <h3>Gastronomie</h3>
-            <ul>
-              <li>Dîners privés avec chefs étoilés</li>
-              <li>Dégustations dans les domaines</li>
-              <li>Cours de cuisine provençale</li>
-              <li>Pique-niques de luxe sur la plage</li>
-            </ul>
-          </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">02</div>
-            <h3>Aventures & Sensations</h3>
-            <ul>
-              <li>Survol en hélicoptère</li>
-              <li>Rallye de voitures de collection</li>
-              <li>Plongée sous-marine privée</li>
-              <li>Excursions en jet privé</li>
-            </ul>
-          </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">03</div>
-            <h3>Événements Privés</h3>
-            <ul>
-              <li>Anniversaires & célébrations</li>
-              <li>Demandes en mariage scénographiées</li>
-              <li>Soirées à thème sur yacht</li>
-              <li>Concerts & artistes privés</li>
-            </ul>
-          </div>
-        </div>
-        <div class="modal-cta">
-          <button class="btn-gold" data-modal="contact"><span>Créer mon Expérience</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- LOCATION -->
-  <div class="modal" id="modal-location">
+  <!-- GESTION DE PROPRIÉTÉS -->
+  <div class="modal" id="modal-gestion">
     <div class="modal-backdrop"></div>
     <div class="modal-panel">
       <button class="modal-close" aria-label="Fermer">
@@ -286,46 +85,119 @@
       <div class="modal-hero" style="background-image: url('assets/location-saisonniere.png')">
         <div class="modal-hero-overlay"></div>
         <div class="modal-hero-content">
-          <span class="modal-label">Location Saisonnière</span>
-          <h2>Votre Résidence sur la Riviera</h2>
-          <p>Des propriétés sélectionnées avec soin pour des séjours saisonniers d'exception.</p>
+          <span class="modal-label" data-i18n="nav_gestion">Gestion de propriétés</span>
+          <h2 data-i18n="gestion_headline">Confiez-nous votre bien, nous nous occupons du reste.</h2>
         </div>
       </div>
       <div class="modal-body">
-        <div class="modal-services">
-          <div class="modal-service-card">
-            <div class="modal-card-number">01</div>
-            <h3>Locations Estivales</h3>
-            <ul>
-              <li>Villas avec piscine & jardin</li>
-              <li>Appartements vue mer</li>
-              <li>De 2 semaines à la saison complète</li>
-              <li>Arrivée clé en main</li>
-            </ul>
+        <div class="service-grid">
+          <div class="service-card">
+            <h3 data-i18n="gestion_s1_title">Gestion locative</h3>
+            <p data-i18n="gestion_s1_desc">Shooting photo, annonces optimisées, stratégie tarifaire — nous maximisons votre rentabilité.</p>
           </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">02</div>
-            <h3>Gestion de Propriété</h3>
-            <ul>
-              <li>Gestion locative complète</li>
-              <li>Entretien & maintenance</li>
-              <li>Accueil des locataires</li>
-              <li>Optimisation des revenus locatifs</li>
-            </ul>
+          <div class="service-card">
+            <h3 data-i18n="gestion_s2_title">Réservations</h3>
+            <p data-i18n="gestion_s2_desc">Sélection des voyageurs, optimisation du calendrier, assistance dédiée 7j/7.</p>
           </div>
-          <div class="modal-service-card">
-            <div class="modal-card-number">03</div>
-            <h3>Services Inclus</h3>
-            <ul>
-              <li>Ménage quotidien</li>
-              <li>Linge de maison haut de gamme</li>
-              <li>Courses & approvisionnement</li>
-              <li>Conciergerie dédiée 7j/7</li>
-            </ul>
+          <div class="service-card">
+            <h3 data-i18n="gestion_s3_title">Intendance</h3>
+            <p data-i18n="gestion_s3_desc">Ménage professionnel, entretien piscine &amp; jardin, maintenance après chaque séjour.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="gestion_s4_title">Accueil client</h3>
+            <p data-i18n="gestion_s4_desc">Check-in / check-out personnalisés, accueil premium, conciergerie additionnelle.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="gestion_s5_title">Optimisation</h3>
+            <p data-i18n="gestion_s5_desc">Taux d'occupation maximisé, ajustement tarifaire, reporting propriétaire.</p>
           </div>
         </div>
         <div class="modal-cta">
-          <button class="btn-gold" data-modal="contact"><span>Nous Contacter</span></button>
+          <button class="btn-gold" data-modal="contact"><span data-i18n="gestion_cta">Confier mon bien</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCIERGERIE PRIVÉE -->
+  <div class="modal" id="modal-conciergerie">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-hero" style="background-image: url('assets/reservations-nightlife.png')">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <span class="modal-label" data-i18n="nav_conciergerie">Conciergerie privée</span>
+          <h2 data-i18n="conciergerie_headline">Un service d'exception, pensé pour vous offrir une expérience sans compromis.</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="service-grid">
+          <div class="service-card">
+            <h3 data-i18n="conciergerie_s1_title">Votre séjour</h3>
+            <p data-i18n="conciergerie_s1_desc">Planification complète, recommandations personnalisées, itinéraires sur-mesure.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="conciergerie_s2_title">Accès privilégiés</h3>
+            <p data-i18n="conciergerie_s2_desc">Restaurants exclusifs, plages privées, beach clubs, accès VIP &amp; événements.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="conciergerie_s3_title">Transports</h3>
+            <p data-i18n="conciergerie_s3_desc">Chauffeurs privés, transferts, véhicules de luxe, hélicoptères &amp; jets privés.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="conciergerie_s4_title">Expériences</h3>
+            <p data-i18n="conciergerie_s4_desc">Location de yachts, journées en mer, activités nautiques, expériences exclusives.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="conciergerie_s5_title">Services privés</h3>
+            <p data-i18n="conciergerie_s5_desc">Chefs à domicile, traiteur, majordome, sommeliers — le luxe à portée de main.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="conciergerie_s6_title">Bien-être</h3>
+            <p data-i18n="conciergerie_s6_desc">Massages à domicile, coiffure, coach sportif, soins personnalisés.</p>
+          </div>
+        </div>
+        <div class="modal-cta">
+          <button class="btn-gold" data-modal="contact"><span data-i18n="conciergerie_cta">Faire une Demande</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉVÉNEMENTIEL -->
+  <div class="modal" id="modal-evenementiel">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-hero" style="background-image: url('assets/experience-dining.png')">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <span class="modal-label" data-i18n="nav_evenementiel">Événementiel</span>
+          <h2 data-i18n="event_headline">Des événements uniques, conçus dans les moindres détails.</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="service-grid">
+          <div class="service-card">
+            <h3 data-i18n="event_s1_title">Organisation</h3>
+            <p data-i18n="event_s1_desc">Soirées privées, anniversaires, EVJF/EVG, dîners gastronomiques, mariages.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="event_s2_title">Coordination</h3>
+            <p data-i18n="event_s2_desc">Recherche de lieux, décoration, DJ &amp; artistes, sécurité, coordination jour J.</p>
+          </div>
+          <div class="service-card">
+            <h3 data-i18n="event_s3_title">Immortaliser</h3>
+            <p data-i18n="event_s3_desc">Photographes et vidéastes professionnels pour capturer chaque instant.</p>
+          </div>
+        </div>
+        <div class="modal-cta">
+          <button class="btn-gold" data-modal="contact"><span data-i18n="event_cta">Organiser un Événement</span></button>
         </div>
       </div>
     </div>
@@ -341,81 +213,112 @@
       <div class="modal-hero modal-hero--short" style="background-image: url('assets/contact-concierge.png')">
         <div class="modal-hero-overlay"></div>
         <div class="modal-hero-content">
-          <span class="modal-label">Contact</span>
-          <h2>Parlons de Vos Envies</h2>
-          <p>Chaque demande est unique. Concevons ensemble votre expérience idéale.</p>
+          <span class="modal-label" data-i18n="nav_contact">Contact</span>
+          <h2 data-i18n="contact_headline">Parlons de Vos Envies</h2>
+          <p data-i18n="contact_subheadline">Chaque demande est unique. Concevons ensemble votre expérience idéale.</p>
         </div>
       </div>
       <div class="modal-body">
-        <form class="contact-form" id="contact-form">
-          <div class="form-row">
+        <!-- Contact Tabs -->
+        <div class="contact-tabs">
+          <button class="contact-tab active" data-tab="form" id="tab-form">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            <span data-i18n="tab_message">Nous écrire</span>
+          </button>
+          <button class="contact-tab" data-tab="booking" id="tab-booking">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <span data-i18n="tab_booking">Prendre RDV</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: Contact Form -->
+        <div class="contact-tab-content active" id="content-form">
+          <form class="contact-form" id="contact-form">
             <div class="form-group">
-              <label for="contact-name">Nom</label>
-              <input type="text" id="contact-name" placeholder="Votre nom" required>
+              <label for="contact-name" data-i18n="form_name">Nom & Prénom</label>
+              <input type="text" id="contact-name" data-i18n-placeholder="form_name_placeholder" placeholder="Votre nom et prénom" required>
             </div>
-            <div class="form-group">
-              <label for="contact-email">Email</label>
-              <input type="email" id="contact-email" placeholder="Votre email" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contact-phone">Téléphone</label>
-              <input type="tel" id="contact-phone" placeholder="+33 6 00 00 00 00">
-            </div>
-            <div class="form-group">
-              <label for="contact-service">Service</label>
-              <input type="text" id="contact-service" placeholder="Yacht, Villa, Expérience...">
-            </div>
-          </div>
-          <div class="form-group form-group--dates">
-            <label>Dates souhaitées</label>
-            <div class="date-range-picker" id="date-range-picker">
-              <div class="date-range-display" id="date-range-display">
-                <span class="date-range-placeholder">Sélectionnez vos dates</span>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-email">
+                  <span data-i18n="form_email">Email</span>
+                  <span class="label-hint" data-i18n="form_email_or_phone">*email ou téléphone requis</span>
+                </label>
+                <input type="email" id="contact-email" data-i18n-placeholder="form_email_placeholder" placeholder="Votre email">
               </div>
-              <div class="calendar-dropdown" id="calendar-dropdown">
-                <div class="calendar-header">
-                  <button type="button" class="cal-nav cal-prev" id="cal-prev">
-                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                  </button>
-                  <span class="cal-month-year" id="cal-month-year"></span>
-                  <button type="button" class="cal-nav cal-next" id="cal-next">
-                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                  </button>
-                </div>
-                <div class="calendar-weekdays">
-                  <span>Lu</span><span>Ma</span><span>Me</span><span>Je</span><span>Ve</span><span>Sa</span><span>Di</span>
-                </div>
-                <div class="calendar-days" id="cal-days"></div>
-                <div class="calendar-footer">
-                  <button type="button" class="cal-clear" id="cal-clear">Effacer</button>
-                  <button type="button" class="cal-confirm" id="cal-confirm">Confirmer</button>
-                </div>
+              <div class="form-group">
+                <label for="contact-phone">
+                  <span data-i18n="form_phone">Téléphone</span>
+                </label>
+                <input type="tel" id="contact-phone" placeholder="+33 6 00 00 00 00">
               </div>
             </div>
-            <input type="hidden" id="contact-dates" name="dates">
+            <div class="form-error" id="form-error" data-i18n="form_error_contact" style="display:none;">Veuillez renseigner au moins un email ou un numéro de téléphone.</div>
+            <div class="form-group">
+              <label for="contact-message" data-i18n="form_message">Votre message</label>
+              <textarea id="contact-message" data-i18n-placeholder="form_message_placeholder" placeholder="Décrivez-nous votre projet..." rows="5"></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn-gold"><span data-i18n="form_submit">Envoyer ma Demande</span></button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Tab 2: Calendly Booking -->
+        <div class="contact-tab-content" id="content-booking">
+          <div class="booking-intro">
+            <p data-i18n="booking_intro">Réservez un appel téléphonique avec Sandra pour discuter de votre projet en toute confidentialité.</p>
           </div>
-          <div class="form-group">
-            <label for="contact-message">Votre message</label>
-            <textarea id="contact-message" placeholder="Décrivez-nous votre projet..." rows="4"></textarea>
+          <div class="calendly-embed" id="calendly-embed">
+            <!-- Replace YOUR_CALENDLY_URL with your actual Calendly link -->
+            <div class="calendly-placeholder" id="calendly-placeholder">
+              <div class="calendly-placeholder-icon">
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+              </div>
+              <p data-i18n="booking_loading">Chargement du calendrier...</p>
+            </div>
           </div>
-          <div class="form-submit">
-            <button type="submit" class="btn-gold"><span>Envoyer ma Demande</span></button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span>&copy; 2026 SP Conciergerie — Saint-Tropez</span>
-      <span>contact@sp-conciergerie.com</span>
+  <!-- À PROPOS -->
+  <div class="modal" id="modal-apropos">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-hero" style="background-image: url('assets/sandra-portrait.png')">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <span class="modal-label" data-i18n="nav_apropos">À propos</span>
+          <h2>Sandra Pernet</h2>
+        </div>
+      </div>
+      <div class="modal-body apropos-body">
+        <div class="apropos-intro">
+          <p class="apropos-lead" data-i18n="apropos_lead">Derrière SP Conciergerie se trouve une femme passionnée, profondément ancrée dans l'univers du luxe et de l'art de vivre à la française.</p>
+        </div>
+        <div class="apropos-story">
+          <h3 data-i18n="apropos_h1">Un parcours d'exception</h3>
+          <p data-i18n="apropos_p1">Originaire du sud de la France, Sandra a débuté sa carrière comme mannequin, évoluant entre les podiums parisiens, les shootings sur les plages de Saint-Tropez et les événements mondains de Courchevel. Ce monde exigeant lui a appris le sens du détail, l'élégance naturelle et, surtout, l'art de créer des connexions authentiques.</p>
+          <p data-i18n="apropos_p2">Au fil des années, Sandra a tissé un carnet d'adresses exceptionnel — restaurateurs étoilés, directeurs de palaces, capitaines de yachts, artistes et artisans d'excellence. Chaque rencontre est devenue une porte ouverte vers un service toujours plus personnalisé et exclusif.</p>
+          <h3 data-i18n="apropos_h2">De la passion au métier</h3>
+          <p data-i18n="apropos_p3">C'est tout naturellement que Sandra a fondé SP Conciergerie, transformant son réseau privilégié et sa connaissance intime de ces destinations en un service de conciergerie sur mesure. Sa philosophie est simple : chaque client mérite une attention absolue, chaque demande est une promesse d'excellence.</p>
+          <p data-i18n="apropos_p4">Présente à Saint-Tropez, Paris et Courchevel, Sandra connaît chaque adresse confidentielle, chaque lieu d'exception et chaque prestataire de confiance. Elle met cette expertise rare au service de ses clients, avec une discrétion et une réactivité qui font toute la différence.</p>
+          <h3 data-i18n="apropos_h3">Notre engagement</h3>
+          <p data-i18n="apropos_p5">Chez SP Conciergerie, nous ne proposons pas simplement des services — nous créons des expériences. Que ce soit pour la gestion de votre propriété, l'organisation d'un événement inoubliable ou simplement pour vous offrir le meilleur d'une destination, Sandra et son équipe sont à vos côtés, 7 jours sur 7.</p>
+        </div>
+        <div class="modal-cta">
+          <button class="btn-gold" data-modal="contact"><span data-i18n="apropos_cta">Rencontrons-nous</span></button>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
 
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
