@@ -67,12 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const panel = modal.querySelector('.modal-panel');
     if (panel) panel.scrollTop = 0;
 
+    // Push history state so back button closes modal
+    history.pushState({ modal: modal.id }, '');
+
     // Show modal
     modal.classList.add('active');
     closeMobileNav();
   }
 
-  function closeActiveModal(callback) {
+  function closeActiveModal(callback, fromPopstate) {
     if (!activeModal) {
       if (callback) callback();
       return;
@@ -81,6 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = activeModal;
     modal.classList.remove('active');
 
+    // If NOT triggered by back button, go back in history to clean up
+    if (!fromPopstate) {
+      history.back();
+    }
+
     // Wait for exit animation
     setTimeout(() => {
       document.body.style.overflow = '';
@@ -88,6 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (callback) callback();
     }, 500);
   }
+
+  // --- Back button closes modal ---
+  window.addEventListener('popstate', (e) => {
+    if (activeModal) {
+      closeActiveModal(null, true);
+    }
+  });
 
   // Bind all data-modal triggers
   document.querySelectorAll('[data-modal]').forEach(trigger => {
