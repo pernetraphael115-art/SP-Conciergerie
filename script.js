@@ -124,6 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Also close when clicking on the modal container itself (visible padding area)
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeActiveModal();
+      }
+    });
+
     if (closeBtn) {
       closeBtn.addEventListener('click', () => {
         closeActiveModal();
