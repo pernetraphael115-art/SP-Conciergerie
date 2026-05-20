@@ -1311,18 +1311,20 @@ ul, ol { list-style: none; }
   .hero-cta { margin-top: 28px; }
 
   /* Modals - safe area for iPhone notch/Dynamic Island */
-  /* Modals - overlay look (NOT fullscreen) */
-  .modal { padding: 10px; }
+  /* Modals - fullscreen with sticky close */
+  .modal { padding: 0; }
   .modal-panel {
-    max-height: 92vh;
-    border-radius: 16px;
-    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    max-height: 100vh;
+    border-radius: 0;
   }
 
   .modal-close {
-    position: absolute;
+    position: sticky;
     top: 12px;
-    right: 12px;
+    float: right;
+    margin-right: 12px;
+    margin-top: 12px;
+    margin-bottom: -52px;
     width: 40px;
     height: 40px;
     background: rgba(0,0,0,0.5);
@@ -1333,7 +1335,7 @@ ul, ol { list-style: none; }
   }
   .modal-close svg { width: 14px; height: 14px; stroke: #fff; }
 
-  .modal-hero { height: 35vh; min-height: 220px; border-radius: 16px 16px 0 0; }
+  .modal-hero { height: 35vh; min-height: 220px; }
   .modal-hero--short { height: 28vh; min-height: 180px; }
   .modal-hero-content h2 { font-size: 1.5rem; }
   .modal-hero-content p { font-size: 0.9rem; }
