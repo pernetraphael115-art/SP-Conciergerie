@@ -1298,16 +1298,16 @@ ul, ol { list-style: none; }
 
   /* Hero - BIGGER everything on mobile */
   .hero-content { padding: 0 20px; }
-  .hero-logo-wrapper { margin-bottom: -10px; }
+  .hero-logo-wrapper { margin-bottom: -20px; }
   .hero-big-sp-img {
     height: clamp(240px, 40vh, 420px);
     transform: scale(2);
   }
-  .hero-tagline { margin-top: -16px; }
-  .hero-tagline h1 { font-size: clamp(2.6rem, 10vw, 3.6rem); margin-bottom: 8px; }
+  .hero-tagline { margin-top: -30px; }
+  .hero-tagline h1 { font-size: clamp(2.6rem, 10vw, 3.6rem); margin-bottom: 6px; }
   .hero-tagline p { font-size: 1rem; letter-spacing: 0.2em; }
-  .hero-locations { font-size: 0.95rem; letter-spacing: 0.15em; margin-top: 14px; }
-  .hero-cta { margin-top: 18px; }
+  .hero-locations { font-size: 0.95rem; letter-spacing: 0.15em; margin-top: 8px; }
+  .hero-cta { margin-top: 28px; }
 
   /* Modals - safe area for iPhone notch/Dynamic Island */
   .modal { padding: 0; }
