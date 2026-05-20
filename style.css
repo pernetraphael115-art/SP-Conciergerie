@@ -1311,22 +1311,23 @@ ul, ol { list-style: none; }
   .hero-cta { margin-top: 28px; }
 
   /* Modals - safe area for iPhone notch/Dynamic Island */
-  /* Modals - fullscreen with sticky close */
-  .modal { padding: 0; }
+  /* Modals - STRONG overlay (big clickable area to close) */
+  .modal { padding: 40px 14px 20px; }
   .modal-panel {
-    max-height: 100vh;
-    border-radius: 0;
+    max-height: 82vh;
+    border-radius: 20px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6);
   }
 
   .modal-close {
     position: sticky;
-    top: 12px;
+    top: 10px;
     float: right;
-    margin-right: 12px;
-    margin-top: 12px;
-    margin-bottom: -52px;
-    width: 40px;
-    height: 40px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: -50px;
+    width: 38px;
+    height: 38px;
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -1335,12 +1336,12 @@ ul, ol { list-style: none; }
   }
   .modal-close svg { width: 14px; height: 14px; stroke: #fff; }
 
-  .modal-hero { height: 35vh; min-height: 220px; }
-  .modal-hero--short { height: 28vh; min-height: 180px; }
-  .modal-hero-content h2 { font-size: 1.5rem; }
+  .modal-hero { height: 32vh; min-height: 200px; border-radius: 20px 20px 0 0; }
+  .modal-hero--short { height: 26vh; min-height: 170px; }
+  .modal-hero-content h2 { font-size: 1.4rem; }
   .modal-hero-content p { font-size: 0.9rem; }
-  .modal-hero-content { padding: 24px 20px; }
-  .modal-body { padding: 28px 20px; }
+  .modal-hero-content { padding: 20px 18px; }
+  .modal-body { padding: 24px 18px; }
 
   /* Service cards - bigger */
   .service-card { padding: 20px 16px; }
