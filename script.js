@@ -166,31 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.contact-tab-content').forEach(c => c.classList.remove('active'));
       const content = document.getElementById('content-' + tabId);
       if (content) content.classList.add('active');
-      // Lazy-load Calendly on first click
-      if (tabId === 'booking' && !window._calendlyLoaded) {
-        loadCalendly();
-      }
     });
   });
 
-  // --- Calendly embed ---
-  function loadCalendly() {
-    window._calendlyLoaded = true;
-    const container = document.getElementById('calendly-embed');
-    const placeholder = document.getElementById('calendly-placeholder');
-    // ⚠️ REPLACE THIS URL with your actual Calendly link
-    const CALENDLY_URL = 'https://calendly.com/YOUR_USERNAME/appel-telephonique';
-    if (container) {
-      const iframe = document.createElement('iframe');
-      iframe.src = CALENDLY_URL + '?hide_gdpr_banner=1&background_color=fdfcfa&text_color=1a1a1a&primary_color=b8956a';
-      iframe.style.width = '100%';
-      iframe.style.minHeight = '630px';
-      iframe.style.border = 'none';
-      iframe.setAttribute('loading', 'lazy');
-      iframe.onload = () => { if (placeholder) placeholder.style.display = 'none'; };
-      container.appendChild(iframe);
-    }
-  }
+  // --- Calendly ---
+  // Calendly inline widget is loaded automatically by widget.js
+  // Colors are configured via data-url params in index.html
 
   // --- Form handling (Formspree) ---
   // ⚠️ REPLACE 'YOUR_FORM_ID' with your Formspree form ID

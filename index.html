@@ -270,12 +270,10 @@
             <p data-i18n="booking_intro">Réservez un appel téléphonique avec Sandra pour discuter de votre projet en toute confidentialité.</p>
           </div>
           <div class="calendly-embed" id="calendly-embed">
-            <!-- Replace YOUR_CALENDLY_URL with your actual Calendly link -->
-            <div class="calendly-placeholder" id="calendly-placeholder">
-              <div class="calendly-placeholder-icon">
-                <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-              </div>
-              <p data-i18n="booking_loading">Chargement du calendrier...</p>
+            <!-- ⚠️ REPLACE YOUR_USERNAME/appel-telephonique with your actual Calendly event URL -->
+            <div class="calendly-inline-widget"
+                 data-url="https://calendly.com/YOUR_USERNAME/appel-telephonique?hide_gdpr_banner=1&background_color=fdfcfa&text_color=1a1a1a&primary_color=b8956a"
+                 style="min-width:280px;height:630px;">
             </div>
           </div>
         </div>
@@ -317,6 +315,10 @@
       </div>
     </div>
   </div>
+
+  <!-- Calendly widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
   <script src="i18n.js"></script>
   <script src="script.js"></script>
