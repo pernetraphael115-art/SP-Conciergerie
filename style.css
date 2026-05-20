@@ -1296,39 +1296,39 @@ ul, ol { list-style: none; }
   .header-inner { padding: 0 16px; }
   .header-logo { font-size: 0.95rem; letter-spacing: 0.2em; }
 
-  /* Hero - bigger everything */
+  /* Hero - BIGGER everything on mobile */
   .hero-content { padding: 0 20px; }
   .hero-big-sp-img {
-    height: clamp(160px, 28vh, 300px);
-    transform: scale(1.25);
+    height: clamp(200px, 35vh, 380px);
+    transform: scale(1.6);
   }
-  .hero-tagline h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
-  .hero-tagline p { font-size: 0.9rem; letter-spacing: 0.2em; }
-  .hero-locations { font-size: 0.85rem; letter-spacing: 0.15em; margin-top: 24px; }
-  .hero-cta { margin-top: 24px; }
+  .hero-tagline h1 { font-size: clamp(2.6rem, 10vw, 3.6rem); }
+  .hero-tagline p { font-size: 1rem; letter-spacing: 0.2em; }
+  .hero-locations { font-size: 0.95rem; letter-spacing: 0.15em; margin-top: 24px; }
+  .hero-cta { margin-top: 28px; }
 
-  /* Modals - safe area for iPhone notch */
+  /* Modals - safe area for iPhone notch/Dynamic Island */
   .modal { padding: 0; }
   .modal-panel { max-height: 100vh; border-radius: 0; }
 
   .modal-close {
-    top: calc(12px + env(safe-area-inset-top, 0px));
+    top: max(54px, calc(12px + env(safe-area-inset-top, 44px)));
     right: 16px;
     width: 44px;
     height: 44px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.55);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 50%;
     z-index: 100;
   }
-  .modal-close svg { width: 16px; height: 16px; }
+  .modal-close svg { width: 16px; height: 16px; stroke: #fff; }
 
-  .modal-hero { height: 35vh; min-height: 220px; }
-  .modal-hero--short { height: 28vh; min-height: 200px; }
+  .modal-hero { height: 38vh; min-height: 240px; }
+  .modal-hero--short { height: 30vh; min-height: 200px; }
   .modal-hero-content h2 { font-size: 1.5rem; }
   .modal-hero-content p { font-size: 0.9rem; }
-  .modal-hero-content { padding: 24px 20px; padding-top: calc(24px + env(safe-area-inset-top, 0px)); }
+  .modal-hero-content { padding: 24px 20px; padding-top: max(60px, calc(24px + env(safe-area-inset-top, 44px))); }
   .modal-body { padding: 28px 20px; }
 
   /* Service cards - bigger */
