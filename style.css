@@ -878,39 +878,102 @@ ul, ol { list-style: none; }
   line-height: 1.7;
 }
 
-/* Calendly embed */
-.calendly-embed {
-  min-height: 500px;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-}
-
-.calendly-embed iframe {
-  width: 100%;
-  min-height: 630px;
-  border: none;
-}
-
-.calendly-placeholder {
+/* Direct Contact */
+.direct-contact {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.direct-contact-intro {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.direct-contact-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--cream);
+  border: 1px solid var(--gold-border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s var(--ease);
+}
+
+.direct-contact-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 30px rgba(184, 149, 106, 0.12);
+  transform: translateY(-2px);
+}
+
+.direct-contact-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  min-height: 400px;
+  background: rgba(184, 149, 106, 0.08);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.direct-contact-icon svg {
+  stroke: var(--gold);
+}
+
+.direct-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.direct-contact-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--text-muted);
 }
 
-.calendly-placeholder-icon svg {
-  stroke: var(--gold-border);
+.direct-contact-value {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--anthracite);
+  font-weight: 400;
 }
 
-.calendly-placeholder p {
-  font-size: 0.85rem;
+.direct-contact-action {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.direct-contact-hours {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.direct-contact-hours p {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 300;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 .contact-form {
