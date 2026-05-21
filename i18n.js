@@ -57,7 +57,9 @@ const TRANSLATIONS = {
     apropos_p5: "Chez SP Conciergerie, nous ne proposons pas simplement des services — nous créons des expériences. Que ce soit pour la gestion de votre propriété, l'organisation d'un événement inoubliable ou simplement pour vous offrir le meilleur d'une destination, Sandra et son équipe sont à vos côtés, 7 jours sur 7.",
     apropos_cta: "Rencontrons-nous",
     page_title: "SP Conciergerie — Saint-Tropez | Paris | Courchevel",
-    meta_description: "SP Conciergerie, votre service de conciergerie de luxe sur mesure. Interventions exclusives à Saint-Tropez, Paris et Courchevel."
+    meta_description: "SP Conciergerie, votre service de conciergerie de luxe sur mesure. Interventions exclusives à Saint-Tropez, Paris et Courchevel.",
+    mobile_cta_discover: "Découvrir",
+    mobile_cta_contact: "Nous contacter"
   },
   en: {
     nav_gestion: "Property Management",
@@ -117,7 +119,9 @@ const TRANSLATIONS = {
     apropos_p5: "At SP Conciergerie, we don't simply offer services — we create experiences. Whether it's managing your property, organizing an unforgettable event, or simply bringing you the very best of a destination, Sandra and her team are by your side, 7 days a week.",
     apropos_cta: "Let's Meet",
     page_title: "SP Conciergerie — Saint-Tropez | Paris | Courchevel",
-    meta_description: "SP Conciergerie, your bespoke luxury concierge service. Exclusive interventions in Saint-Tropez, Paris and Courchevel."
+    meta_description: "SP Conciergerie, your bespoke luxury concierge service. Exclusive interventions in Saint-Tropez, Paris and Courchevel.",
+    mobile_cta_discover: "Discover",
+    mobile_cta_contact: "Get in touch"
   }
 };
 
@@ -137,7 +141,15 @@ function setLanguage(lang) {
   // Update all data-i18n text content
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (t[key]) el.textContent = t[key];
+    if (!t[key]) return;
+    // Preserve SVG children (e.g. mobile CTA arrows)
+    const svg = el.querySelector('svg');
+    if (svg) {
+      el.childNodes.forEach(n => { if (n.nodeType === 3) n.remove(); });
+      el.insertBefore(document.createTextNode(t[key] + ' '), svg);
+    } else {
+      el.textContent = t[key];
+    }
   });
 
   // Update all data-i18n-placeholder

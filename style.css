@@ -1390,7 +1390,9 @@ a.direct-contact-card:hover {
 
   /* Mobile Sections */
   .mobile-sections {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
     background: var(--anthracite);
   }
 
@@ -1451,6 +1453,35 @@ a.direct-contact-card:hover {
     font-weight: 300;
     color: #fff;
     line-height: 1.35;
+    margin-bottom: 16px;
+  }
+
+  .mobile-section-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 10px 20px;
+    border: 1px solid rgba(212, 186, 148, 0.35);
+    border-radius: 30px;
+    transition: all 0.3s var(--ease);
+  }
+
+  .mobile-section-card:active .mobile-section-cta {
+    background: rgba(184, 149, 106, 0.2);
+    border-color: var(--gold);
+  }
+
+  .mobile-section-cta svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--gold-light);
+    transition: transform 0.3s var(--ease);
   }
 
   /* Mobile Footer */
