@@ -896,7 +896,7 @@ ul, ol { list-style: none; }
   margin-bottom: 8px;
 }
 
-.direct-contact-card {
+a.direct-contact-card {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -907,9 +907,10 @@ ul, ol { list-style: none; }
   text-decoration: none;
   color: inherit;
   transition: all 0.3s var(--ease);
+  cursor: pointer;
 }
 
-.direct-contact-card:hover {
+a.direct-contact-card:hover {
   border-color: var(--gold);
   box-shadow: 0 8px 30px rgba(184, 149, 106, 0.12);
   transform: translateY(-2px);
@@ -947,10 +948,11 @@ ul, ol { list-style: none; }
 }
 
 .direct-contact-value {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
   color: var(--anthracite);
   font-weight: 400;
+  letter-spacing: 0.04em;
 }
 
 .direct-contact-action {
