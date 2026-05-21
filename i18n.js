@@ -30,6 +30,8 @@ const TRANSLATIONS = {
     event_cta: "Organiser un Événement",
     contact_headline: "Parlons de Vos Envies",
     contact_subheadline: "Chaque demande est unique. Concevons ensemble votre expérience idéale.",
+    tab_message: "Nous écrire",
+    tab_direct: "Contact direct",
     form_name: "Nom & Prénom", form_name_placeholder: "Votre nom et prénom",
     form_email: "Email", form_email_placeholder: "Votre email",
     form_email_or_phone: "*email ou téléphone requis",
@@ -38,10 +40,12 @@ const TRANSLATIONS = {
     form_submit: "Envoyer ma Demande",
     form_error_contact: "Veuillez renseigner au moins un email ou un numéro de téléphone.",
     form_sent: "Envoyé ✓",
-    tab_message: "Nous écrire",
-    tab_booking: "Prendre RDV",
-    booking_intro: "Réservez un appel téléphonique avec Sandra pour discuter de votre projet en toute confidentialité.",
-    booking_loading: "Chargement du calendrier...",
+    direct_intro: "Joignez Sandra directement pour discuter de votre projet en toute confidentialité.",
+    direct_phone_label: "Téléphone",
+    direct_email_label: "Email",
+    direct_call: "Appeler",
+    direct_write: "Écrire",
+    direct_hours: "Disponible 7j/7 · Réponse sous 24h",
     apropos_lead: "Derrière SP Conciergerie se trouve une femme passionnée, profondément ancrée dans l'univers du luxe et de l'art de vivre à la française.",
     apropos_h1: "Un parcours d'exception",
     apropos_p1: "Originaire de Paris, Sandra a débuté sa carrière comme mannequin, évoluant entre les podiums parisiens, les shootings sur les plages de Saint-Tropez et les événements mondains de Courchevel. Ce monde exigeant lui a appris le sens du détail, l'élégance naturelle et, surtout, l'art de créer des connexions authentiques.",
@@ -52,8 +56,8 @@ const TRANSLATIONS = {
     apropos_h3: "Notre engagement",
     apropos_p5: "Chez SP Conciergerie, nous ne proposons pas simplement des services — nous créons des expériences. Que ce soit pour la gestion de votre propriété, l'organisation d'un événement inoubliable ou simplement pour vous offrir le meilleur d'une destination, Sandra et son équipe sont à vos côtés, 7 jours sur 7.",
     apropos_cta: "Rencontrons-nous",
-    cal_weekdays: ["Lu","Ma","Me","Je","Ve","Sa","Di"],
-    cal_months: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']
+    page_title: "SP Conciergerie — Saint-Tropez | Paris | Courchevel",
+    meta_description: "SP Conciergerie, votre service de conciergerie de luxe sur mesure. Interventions exclusives à Saint-Tropez, Paris et Courchevel."
   },
   en: {
     nav_gestion: "Property Management",
@@ -86,6 +90,8 @@ const TRANSLATIONS = {
     event_cta: "Plan an Event",
     contact_headline: "Let's Talk About Your Vision",
     contact_subheadline: "Every request is unique. Let's design your ideal experience together.",
+    tab_message: "Write to Us",
+    tab_direct: "Direct Contact",
     form_name: "Full Name", form_name_placeholder: "Your full name",
     form_email: "Email", form_email_placeholder: "Your email",
     form_email_or_phone: "*email or phone required",
@@ -94,10 +100,12 @@ const TRANSLATIONS = {
     form_submit: "Send My Request",
     form_error_contact: "Please provide at least an email address or phone number.",
     form_sent: "Sent ✓",
-    tab_message: "Write to Us",
-    tab_booking: "Book a Call",
-    booking_intro: "Schedule a private phone call with Sandra to discuss your project in complete confidentiality.",
-    booking_loading: "Loading calendar...",
+    direct_intro: "Reach Sandra directly to discuss your project in complete confidentiality.",
+    direct_phone_label: "Phone",
+    direct_email_label: "Email",
+    direct_call: "Call",
+    direct_write: "Write",
+    direct_hours: "Available 7/7 · Response within 24h",
     apropos_lead: "Behind SP Conciergerie stands a passionate woman, deeply rooted in the world of luxury and the French art de vivre.",
     apropos_h1: "An Exceptional Journey",
     apropos_p1: "Originally from Paris, Sandra began her career as a model, moving between Parisian runways, photo shoots on the beaches of Saint-Tropez, and society events in Courchevel. This demanding world taught her an eye for detail, natural elegance, and above all, the art of building authentic connections.",
@@ -108,17 +116,23 @@ const TRANSLATIONS = {
     apropos_h3: "Our Commitment",
     apropos_p5: "At SP Conciergerie, we don't simply offer services — we create experiences. Whether it's managing your property, organizing an unforgettable event, or simply bringing you the very best of a destination, Sandra and her team are by your side, 7 days a week.",
     apropos_cta: "Let's Meet",
-    cal_weekdays: ["Mo","Tu","We","Th","Fr","Sa","Su"],
-    cal_months: ['January','February','March','April','May','June','July','August','September','October','November','December']
+    page_title: "SP Conciergerie — Saint-Tropez | Paris | Courchevel",
+    meta_description: "SP Conciergerie, your bespoke luxury concierge service. Exclusive interventions in Saint-Tropez, Paris and Courchevel."
   }
 };
 
-let currentLang = 'fr';
+let currentLang = localStorage.getItem('sp-lang') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
 
 function setLanguage(lang) {
   currentLang = lang;
+  localStorage.setItem('sp-lang', lang);
   const t = TRANSLATIONS[lang];
   document.documentElement.lang = lang;
+
+  // Update page title and meta description
+  document.title = t.page_title;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', t.meta_description);
 
   // Update all data-i18n text content
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -132,20 +146,13 @@ function setLanguage(lang) {
     if (t[key]) el.placeholder = t[key];
   });
 
-  // Update calendar weekdays
-  const weekdaysEl = document.getElementById('calendar-weekdays');
-  if (weekdaysEl && t.cal_weekdays) {
-    const spans = weekdaysEl.querySelectorAll('span');
-    t.cal_weekdays.forEach((d, i) => { if (spans[i]) spans[i].textContent = d; });
-  }
-
   // Sync all lang-btn active states
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 }
 
-// Bind all lang buttons
+// Bind all lang buttons and apply saved language
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -154,4 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setLanguage(btn.dataset.lang);
     });
   });
+
+  // Apply saved or detected language
+  setLanguage(currentLang);
 });

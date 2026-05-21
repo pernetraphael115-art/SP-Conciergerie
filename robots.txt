@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /assets/*.png$
 
 Sitemap: https://spconcierge.fr/sitemap.xml
