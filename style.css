@@ -1457,31 +1457,35 @@ a.direct-contact-card:hover {
   }
 
   .mobile-section-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-block;
     font-family: var(--font-sans);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--gold-light);
-    padding: 10px 20px;
-    border: 1px solid rgba(212, 186, 148, 0.35);
-    border-radius: 30px;
-    transition: all 0.3s var(--ease);
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s var(--ease);
+  }
+
+  .mobile-section-cta::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(212, 186, 148, 0.4);
+    transition: width 0.3s var(--ease), background 0.3s var(--ease);
   }
 
   .mobile-section-card:active .mobile-section-cta {
-    background: rgba(184, 149, 106, 0.2);
-    border-color: var(--gold);
+    color: var(--gold-light);
   }
 
-  .mobile-section-cta svg {
-    width: 14px;
-    height: 14px;
-    stroke: var(--gold-light);
-    transition: transform 0.3s var(--ease);
+  .mobile-section-card:active .mobile-section-cta::after {
+    background: var(--gold-light);
   }
 
   /* Mobile Footer */

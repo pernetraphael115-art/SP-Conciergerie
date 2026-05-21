@@ -141,15 +141,7 @@ function setLanguage(lang) {
   // Update all data-i18n text content
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (!t[key]) return;
-    // Preserve SVG children (e.g. mobile CTA arrows)
-    const svg = el.querySelector('svg');
-    if (svg) {
-      el.childNodes.forEach(n => { if (n.nodeType === 3) n.remove(); });
-      el.insertBefore(document.createTextNode(t[key] + ' '), svg);
-    } else {
-      el.textContent = t[key];
-    }
+    if (t[key]) el.textContent = t[key];
   });
 
   // Update all data-i18n-placeholder
