@@ -255,25 +255,9 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.set('phone', phone || 'Non renseigné');
         formData.set('message', document.getElementById('contact-message').value);
 
-        // Active l'auto-réponse au client (si email fourni)
+        // Définit le reply-to pour répondre facilement au client
         if (email) {
           formData.set('replyto', email);
-          formData.set('autoreply', 'true');
-          formData.set('autoreply_from', 'SP Conciergerie');
-          formData.set('autoreply_sender', 'contact@spconcierge.fr');
-          formData.set('autoreply_subject', 'Votre demande auprès de SP Conciergerie');
-          formData.set('autoreply_message', 
-            'Bonjour ' + document.getElementById('contact-name').value + ',\n\n' +
-            'Nous vous remercions pour votre message et l\'intérêt que vous portez à SP Conciergerie.\n\n' +
-            'Votre demande a bien été transmise. Sandra l\'étudie avec la plus grande attention et reviendra vers vous personnellement dans les meilleurs délais pour échanger sur vos envies et vous proposer un accompagnement sur mesure.\n\n' +
-            'Dans l\'attente de ce prochain contact, nous restons à votre entière disposition.\n\n' +
-            'L\'excellence à votre service.\n\n' +
-            'Bien à vous,\n\n' +
-            'L\'équipe SP Conciergerie\n' +
-            'Saint-Tropez | Paris | Courchevel\n' +
-            'contact@spconcierge.fr | +33 6 42 25 56 92\n' +
-            'https://spconcierge.fr'
-          );
         }
 
         const response = await fetch('https://api.web3forms.com/submit', {
