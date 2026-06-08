@@ -195,7 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Form handling (EmailJS) ---
   const EMAILJS_PUBLIC_KEY = 'hxz4YmwjPb6WY82ld';
   const EMAILJS_SERVICE_ID = 'service_hlurfk8';
-  const EMAILJS_TEMPLATE_ID = 'template_gbd0epq';
+  const EMAILJS_TEMPLATE_NOTIFY = 'template_gbd0epq';      // Notification → toi
+  const EMAILJS_TEMPLATE_AUTOREPLY = 'template_notification_1'; // Auto-réponse → client
 
   // Initialisation EmailJS
   if (typeof emailjs !== 'undefined') {
@@ -250,8 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Mode production : envoi via EmailJS
-      // Envoie le template Contact Us (notification pour toi)
-      // + l'Auto-Reply liée est envoyée automatiquement au client
       try {
         const templateParams = {
           name: document.getElementById('contact-name').value,
@@ -260,7 +259,13 @@ document.addEventListener('DOMContentLoaded', () => {
           message: document.getElementById('contact-message').value
         };
 
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+        // 1. Envoie la notification à contact@spconcierge.fr
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_NOTIFY, templateParams);
+
+        // 2. Envoie l'auto-réponse au client (si email fourni)
+        if (email) {
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_AUTOREPLY, templateParams);
+        }
 
         btn.innerHTML = '<span>' + t.form_sent + '</span>';
         btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
