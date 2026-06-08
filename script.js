@@ -192,11 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // --- Form handling (Formspree) ---
-  // ⚠️ REPLACE 'YOUR_FORM_ID' with your Formspree form ID
-  // → Sign up free at https://formspree.io
-  // → Create a form, copy the ID (e.g. "xpzvqkdl")
-  const FORMSPREE_ID = 'YOUR_FORM_ID';
+  // --- Form handling (Web3Forms) ---
+  // ⚠️ REMPLACEZ la clé ci-dessous par votre Access Key Web3Forms
+  // → Allez sur https://web3forms.com/ , entrez contact@spconcierge.fr, et copiez la clé reçue par mail
+  const WEB3FORMS_KEY = 'cfe54436-dcaf-477b-a195-401bdac0926a';
+
+  // Détection automatique : local (test) vs serveur (production)
+  const isLocal = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
   const form = document.getElementById('contact-form');
   if (form) {
@@ -221,21 +223,51 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.innerHTML = '<span>...</span>';
       btn.style.pointerEvents = 'none';
 
+      // Mode local : simulation d'envoi réussi pour tester le formulaire
+      if (isLocal) {
+        setTimeout(() => {
+          btn.innerHTML = '<span>' + t.form_sent + '</span>';
+          btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
+          console.log('[SP Conciergerie] Mode local — simulation d\'envoi :', {
+            name: document.getElementById('contact-name').value,
+            email: email || 'Non renseigné',
+            phone: phone || 'Non renseigné',
+            message: document.getElementById('contact-message').value
+          });
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '';
+            btn.style.pointerEvents = '';
+            form.reset();
+          }, 2500);
+        }, 800);
+        return;
+      }
+
+      // Mode production : envoi réel via Web3Forms
       try {
-        const formData = new FormData(form);
-        // Add fields explicitly for Formspree
+        const formData = new FormData();
+        formData.set('access_key', WEB3FORMS_KEY);
+        formData.set('subject', 'Nouvelle demande de contact — SP Conciergerie');
+        formData.set('from_name', 'SP Conciergerie');
         formData.set('name', document.getElementById('contact-name').value);
         formData.set('email', email || 'Non renseigné');
         formData.set('phone', phone || 'Non renseigné');
         formData.set('message', document.getElementById('contact-message').value);
 
-        const response = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        // Active l'auto-réponse au client (si email fourni)
+        if (email) {
+          formData.set('replyto', email);
+        }
+
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
+          body: formData
         });
 
-        if (response.ok) {
+        const result = await response.json();
+
+        if (result.success) {
           btn.innerHTML = '<span>' + t.form_sent + '</span>';
           btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
           setTimeout(() => {
