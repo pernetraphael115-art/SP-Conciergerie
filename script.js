@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialisation EmailJS
   if (typeof emailjs !== 'undefined') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
   }
 
   // Détection automatique : local (test) vs serveur (production)
@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
           form.reset();
         }, 2500);
       } catch (err) {
+        console.error('[SP Conciergerie] Erreur EmailJS:', err);
         btn.innerHTML = '<span>' + (currentLang === 'fr' ? 'Erreur — réessayez' : 'Error — try again') + '</span>';
         btn.style.background = 'rgba(220,53,69,0.8)';
         setTimeout(() => {
