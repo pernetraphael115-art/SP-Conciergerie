@@ -192,10 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // --- Form handling (Web3Forms) ---
-  // ⚠️ REMPLACEZ la clé ci-dessous par votre Access Key Web3Forms
-  // → Allez sur https://web3forms.com/ , entrez contact@spconcierge.fr, et copiez la clé reçue par mail
-  const WEB3FORMS_KEY = 'cfe54436-dcaf-477b-a195-401bdac0926a';
+  // --- Form handling (EmailJS) ---
+  const EMAILJS_PUBLIC_KEY = 'hxz4YmwjPb6WY82ld';
+  const EMAILJS_SERVICE_ID = 'service_hlurfk8';
+  const EMAILJS_TEMPLATE_ID = 'template_gbd0epq';
+
+  // Initialisation EmailJS
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
 
   // Détection automatique : local (test) vs serveur (production)
   const isLocal = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -244,41 +249,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Mode production : envoi réel via Web3Forms
+      // Mode production : envoi via EmailJS
+      // Envoie le template Contact Us (notification pour toi)
+      // + l'Auto-Reply liée est envoyée automatiquement au client
       try {
-        const formData = new FormData();
-        formData.set('access_key', WEB3FORMS_KEY);
-        formData.set('subject', 'Nouvelle demande de contact — SP Conciergerie');
-        formData.set('from_name', 'SP Conciergerie');
-        formData.set('name', document.getElementById('contact-name').value);
-        formData.set('email', email || 'Non renseigné');
-        formData.set('phone', phone || 'Non renseigné');
-        formData.set('message', document.getElementById('contact-message').value);
+        const templateParams = {
+          name: document.getElementById('contact-name').value,
+          email: email || 'Non renseigné',
+          phone: phone || 'Non renseigné',
+          message: document.getElementById('contact-message').value
+        };
 
-        // Définit le reply-to pour répondre facilement au client
-        if (email) {
-          formData.set('replyto', email);
-        }
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
 
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          btn.innerHTML = '<span>' + t.form_sent + '</span>';
-          btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
-          setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '';
-            btn.style.pointerEvents = '';
-            form.reset();
-          }, 2500);
-        } else {
-          throw new Error('Send failed');
-        }
+        btn.innerHTML = '<span>' + t.form_sent + '</span>';
+        btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.background = '';
+          btn.style.pointerEvents = '';
+          form.reset();
+        }, 2500);
       } catch (err) {
         btn.innerHTML = '<span>' + (currentLang === 'fr' ? 'Erreur — réessayez' : 'Error — try again') + '</span>';
         btn.style.background = 'rgba(220,53,69,0.8)';
