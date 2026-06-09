@@ -192,18 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // --- Form handling (EmailJS) ---
-  const EMAILJS_PUBLIC_KEY = 'hxz4YmwjPb6WY82ld';
-  const EMAILJS_SERVICE_ID = 'service_hlurfk8';
-  const EMAILJS_TEMPLATE_NOTIFY = 'template_gbd0epq';      // Notification → toi
-  const EMAILJS_TEMPLATE_AUTOREPLY = 'template_notification_1'; // Auto-réponse → client
-
-  // Initialisation EmailJS
-  if (typeof emailjs !== 'undefined') {
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  }
-
-  // Détection automatique : local (test) vs serveur (production)
+  // --- Form handling (Web3Forms) ---
+  const WEB3FORMS_KEY = 'cfe54436-dcaf-477b-a195-401bdac0926a';
   const isLocal = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
   const form = document.getElementById('contact-form');
@@ -214,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const phone = document.getElementById('contact-phone').value.trim();
       const errorEl = document.getElementById('form-error');
 
-      // Custom validation: email OR phone required
       if (!email && !phone) {
         if (errorEl) errorEl.style.display = 'block';
         return;
@@ -225,21 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalText = btn.innerHTML;
       const t = TRANSLATIONS[currentLang];
 
-      // Loading state
       btn.innerHTML = '<span>...</span>';
       btn.style.pointerEvents = 'none';
 
-      // Mode local : simulation d'envoi réussi pour tester le formulaire
       if (isLocal) {
         setTimeout(() => {
           btn.innerHTML = '<span>' + t.form_sent + '</span>';
           btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
-          console.log('[SP Conciergerie] Mode local — simulation d\'envoi :', {
-            name: document.getElementById('contact-name').value,
-            email: email || 'Non renseigné',
-            phone: phone || 'Non renseigné',
-            message: document.getElementById('contact-message').value
-          });
           setTimeout(() => {
             btn.innerHTML = originalText;
             btn.style.background = '';
@@ -250,39 +231,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Mode production : envoi via EmailJS
       try {
-        const templateParams = {
-          name: document.getElementById('contact-name').value,
-          email: email || 'Non renseigné',
-          phone: phone || 'Non renseigné',
-          message: document.getElementById('contact-message').value
-        };
+        const formData = new FormData();
+        formData.set('access_key', WEB3FORMS_KEY);
+        formData.set('subject', 'Nouvelle demande — SP Conciergerie');
+        formData.set('from_name', 'SP Conciergerie');
+        formData.set('name', document.getElementById('contact-name').value);
+        formData.set('email', email || 'Non renseigné');
+        formData.set('phone', phone || 'Non renseigné');
+        formData.set('message', document.getElementById('contact-message').value);
+        if (email) formData.set('replyto', email);
 
-        // 1. Envoie la notification à contact@spconcierge.fr
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_NOTIFY, templateParams);
-        console.log('[SP Conciergerie] Notification envoyée ✅');
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
 
-        // 2. Envoie l'auto-réponse au client (ne bloque pas si erreur)
-        if (email) {
-          try {
-            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_AUTOREPLY, templateParams);
-            console.log('[SP Conciergerie] Auto-réponse envoyée au client ✅');
-          } catch (replyErr) {
-            console.error('[SP Conciergerie] Auto-réponse échouée (notification OK) :', replyErr);
-          }
+        if (result.success) {
+          btn.innerHTML = '<span>' + t.form_sent + '</span>';
+          btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '';
+            btn.style.pointerEvents = '';
+            form.reset();
+          }, 2500);
+        } else {
+          throw new Error('Envoi échoué');
         }
-
-        btn.innerHTML = '<span>' + t.form_sent + '</span>';
-        btn.style.background = 'linear-gradient(135deg, #4CAF50, #66BB6A)';
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = '';
-          btn.style.pointerEvents = '';
-          form.reset();
-        }, 2500);
       } catch (err) {
-        console.error('[SP Conciergerie] Erreur EmailJS notification:', err);
         btn.innerHTML = '<span>' + (currentLang === 'fr' ? 'Erreur — réessayez' : 'Error — try again') + '</span>';
         btn.style.background = 'rgba(220,53,69,0.8)';
         setTimeout(() => {
@@ -293,6 +271,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
 
 });
