@@ -526,27 +526,33 @@ ul, ol { list-style: none; }
 
 /* Close button */
 .modal-close {
-  position: fixed;
-  top: 24px; right: 24px;
-  z-index: 10;
-  width: 48px; height: 48px;
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+  width: 44px; height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.15);
+  margin-left: auto;
+  margin-right: 12px;
+  margin-top: 12px;
+  margin-bottom: -56px;
+  background: rgba(0,0,0,0.45);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.3s var(--ease);
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  flex-shrink: 0;
 }
 
 .modal-close svg {
-  width: 18px; height: 18px;
+  width: 16px; height: 16px;
   stroke: var(--white);
   fill: none;
   stroke-width: 2;
-  transition: stroke 0.3s;
+  pointer-events: none;
 }
 
 .modal-close:hover {
@@ -898,8 +904,8 @@ ul, ol { list-style: none; }
 a.direct-contact-card {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 24px 28px;
+  gap: 16px;
+  padding: 20px 22px;
   background: var(--cream);
   border: 1px solid var(--gold-border);
   border-radius: 12px;
@@ -907,6 +913,8 @@ a.direct-contact-card {
   color: inherit;
   transition: all 0.3s var(--ease);
   cursor: pointer;
+  min-width: 0;
+  overflow: hidden;
 }
 
 a.direct-contact-card:hover {
@@ -935,6 +943,7 @@ a.direct-contact-card:hover {
   flex-direction: column;
   gap: 4px;
   flex: 1;
+  min-width: 0;
 }
 
 .direct-contact-label {
@@ -952,6 +961,9 @@ a.direct-contact-card:hover {
   color: var(--anthracite);
   font-weight: 400;
   letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .direct-contact-action {
@@ -1563,30 +1575,25 @@ a.direct-contact-card:hover {
   .hero-cta { margin-top: 28px; }
 
   /* Modals - safe area for iPhone notch/Dynamic Island */
-  /* Modals - STRONG overlay (big clickable area to close) */
-  .modal { padding: 40px 14px 20px; }
+  .modal { padding: 40px 10px 20px; }
   .modal-panel {
-    max-height: 82vh;
+    max-height: 85vh;
     border-radius: 20px;
     box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+    position: relative;
   }
 
   .modal-close {
-    position: sticky;
-    top: 10px;
-    float: right;
-    margin-right: 10px;
+    width: 36px;
+    height: 36px;
     margin-top: 10px;
-    margin-bottom: -50px;
-    width: 38px;
-    height: 38px;
+    margin-right: 10px;
+    margin-bottom: -46px;
     background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 50%;
-    z-index: 100;
   }
   .modal-close svg { width: 14px; height: 14px; stroke: #fff; }
+  .modal-close:hover { transform: none; background: rgba(0,0,0,0.7); }
+  .modal-close:hover svg { stroke: #fff; }
 
   .modal-hero { height: 32vh; min-height: 200px; border-radius: 20px 20px 0 0; }
   .modal-hero--short { height: 26vh; min-height: 170px; }
@@ -1594,6 +1601,19 @@ a.direct-contact-card:hover {
   .modal-hero-content p { font-size: 0.9rem; }
   .modal-hero-content { padding: 20px 18px; }
   .modal-body { padding: 24px 18px; }
+
+  /* Contact Direct mobile fix */
+  a.direct-contact-card {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+  .direct-contact-icon {
+    width: 42px;
+    height: 42px;
+  }
+  .direct-contact-icon svg { width: 22px; height: 22px; }
+  .direct-contact-value { font-size: 0.88rem; }
+  .direct-contact-action { font-size: 0.62rem; letter-spacing: 0.1em; }
 
   /* Service cards - bigger */
   .service-card { padding: 20px 16px; }
