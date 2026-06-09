@@ -1,5 +1,5 @@
 /* ============================================
-   SP CONCIERGERIE — Script V2
+   SP CONCIERGE — Script V2
    Modal-based navigation
    ============================================ */
 
@@ -234,8 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const formData = new FormData();
         formData.set('access_key', WEB3FORMS_KEY);
-        formData.set('subject', 'Nouvelle demande — SP Conciergerie');
-        formData.set('from_name', 'SP Conciergerie');
+        formData.set('subject', 'Nouvelle demande — SP Concierge');
+        formData.set('from_name', 'SP Concierge');
         formData.set('name', document.getElementById('contact-name').value);
         formData.set('email', email || 'Non renseigné');
         formData.set('phone', phone || 'Non renseigné');
