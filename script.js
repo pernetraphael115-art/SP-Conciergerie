@@ -261,10 +261,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Envoie la notification à contact@spconcierge.fr
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_NOTIFY, templateParams);
+        console.log('[SP Conciergerie] Notification envoyée ✅');
 
-        // 2. Envoie l'auto-réponse au client (si email fourni)
+        // 2. Envoie l'auto-réponse au client (ne bloque pas si erreur)
         if (email) {
-          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_AUTOREPLY, templateParams);
+          try {
+            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_AUTOREPLY, templateParams);
+            console.log('[SP Conciergerie] Auto-réponse envoyée au client ✅');
+          } catch (replyErr) {
+            console.error('[SP Conciergerie] Auto-réponse échouée (notification OK) :', replyErr);
+          }
         }
 
         btn.innerHTML = '<span>' + t.form_sent + '</span>';
@@ -276,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
           form.reset();
         }, 2500);
       } catch (err) {
-        console.error('[SP Conciergerie] Erreur EmailJS:', err);
+        console.error('[SP Conciergerie] Erreur EmailJS notification:', err);
         btn.innerHTML = '<span>' + (currentLang === 'fr' ? 'Erreur — réessayez' : 'Error — try again') + '</span>';
         btn.style.background = 'rgba(220,53,69,0.8)';
         setTimeout(() => {
