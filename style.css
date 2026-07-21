@@ -650,29 +650,63 @@ ul, ol { list-style: none; }
 /* Modal Body */
 .modal-body {
   padding: 48px;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+  position: relative;
 }
 
-/* Service Grid - V5 Magazine */
+.modal-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 48px;
+  right: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+}
+
+/* Service Grid - V6 Premium */
 .service-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px 40px;
+  gap: 20px;
 }
 
 .service-card {
-  padding: 28px 24px 28px;
-  background: transparent;
-  border: none;
+  padding: 32px 28px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(247,245,242,0.6));
+  border: 1px solid var(--gold-border);
   position: relative;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s var(--ease-out);
-  border-radius: 4px;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 3px rgba(140, 109, 71, 0.04);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(184, 149, 106, 0.06), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  pointer-events: none;
 }
 
 .service-card:hover {
-  background: rgba(184, 149, 106, 0.04);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(247,245,242,0.8));
+  border-color: var(--gold-light);
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 24px rgba(140, 109, 71, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.service-card:hover::before {
+  opacity: 1;
 }
 
 .modal.active .service-card {
@@ -708,9 +742,10 @@ ul, ol { list-style: none; }
   position: absolute;
   top: 0;
   left: 0;
-  width: 24px;
-  height: 1px;
-  background: var(--gold);
+  width: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 1px;
 }
 
 .service-card p {
@@ -723,7 +758,7 @@ ul, ol { list-style: none; }
 /* CTA */
 .modal-cta {
   text-align: center;
-  padding: 20px 0 40px;
+  padding: 32px 0 48px;
   opacity: 0;
   transform: translateY(16px);
   transition: all 0.5s var(--ease-out) 1.3s;
@@ -736,13 +771,20 @@ ul, ol { list-style: none; }
 
 /* Modal body buttons need gold border instead of white */
 .modal-body .btn-gold {
-  border-color: var(--gold-border);
+  border-color: var(--gold);
   color: var(--anthracite);
+  background: transparent;
+  position: relative;
+}
+
+.modal-body .btn-gold::after {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
 }
 
 .modal-body .btn-gold:hover {
   color: var(--white);
   border-color: var(--gold);
+  box-shadow: 0 4px 16px rgba(184, 149, 106, 0.25);
 }
 
 /* ============================================
